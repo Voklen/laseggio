@@ -1,28 +1,8 @@
-const ac = new AudioContext();
-Soundfont.instrument(ac, 'clavinet').then(onSoundfontLoad);
-
-
-function onSoundfontLoad(clavinet) {
-	clavinet.play('C4');
-	window.navigator.requestMIDIAccess().then(function (midiAccess) {
-		midiAccess.inputs.forEach(function (midiInput) {
-			midiInput.onmidimessage = get_MIDI_message;
-		});
-	}, on_MIDI_failure);
-	window.navigator.requestMIDIAccess().then(function (midiAccess) {
-		midiAccess.inputs.forEach(function (midiInput) {
-			clavinet.listenToMidi(midiInput);
-		});
-	}, on_MIDI_failure);
-}
-
-function on_MIDI_success(midiAccess) {
-	console.log(midiAccess);
-
-	for (var input of midiAccess.inputs.values()) {
-		input.onmidimessage = get_MIDI_message;
-	}
-}
+window.navigator.requestMIDIAccess().then(function (midiAccess) {
+	midiAccess.inputs.forEach(function (midiInput) {
+		midiInput.onmidimessage = get_MIDI_message;
+	});
+}, on_MIDI_failure);
 
 
 function get_MIDI_message(message) {

@@ -898,9 +898,8 @@
 
       // =============== PRIVATE FUNCTIONS ============== //
 
-      function track(name, node) {
-        node.id = nextId++
-        tracked[node.id] = node
+      function track(id, node) {
+        tracked[id] = node
         node.source.onended = function () {
           var now = ac.currentTime
           node.source.disconnect()
