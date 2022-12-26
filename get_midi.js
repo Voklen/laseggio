@@ -1,30 +1,33 @@
-window.navigator.requestMIDIAccess().then(function (midiAccess) {
-	midiAccess.inputs.forEach(function (midiInput) {
-		midiInput.onmidimessage = get_MIDI_message;
-	});
-}, on_MIDI_failure);
+window.navigator.requestMIDIAccess().then(onMIDISuccess, onMIDIFailure);
 
+function onMIDISuccess(midiAccess) {
+	midiAccess.inputs.forEach(forMIDIInput);
+}
 
-function get_MIDI_message(message) {
+function forMIDIInput(midiInput) {
+	midiInput.onmidimessage = getMIDIMessage;
+}
+
+function getMIDIMessage(message) {
 	const command = message.data[0];
 	const note = message.data[1];
-	// A velocity value might not be included with a note_off command
+	// A velocity value might not be included with a noteOff command
 	const velocity = (message.data.length > 2) ? message.data[2] : 0;
 
 	switch (command) {
 		case 144:
 			if (velocity > 0) {
-				note_on(note, velocity);
+				noteOn(note, velocity);
 			} else {
-				note_off(note);
+				noteOff(note);
 			}
 			break;
 		case 128:
-			note_off(note);
+			noteOff(note);
 			break;
 	}
 }
 
-function on_MIDI_failure() {
+function onMIDIFailure() {
 	console.log('Could not access your MIDI devices.');
 }
