@@ -9,7 +9,7 @@ function setInstrument(piano) {
 function noteOn(note, velocity) {
 	const noteElement = getNoteElement(note)
 	noteElement.style.background = 'red'
-	instrument.play(note)
+	instrument.play(note, 0, { gain: velocity / 64 })
 }
 
 function noteOff(note) {
