@@ -21,6 +21,6 @@ function noteOff(note) {
 function getNoteElement(note) {
 	const element = document.getElementById('piano');
 	const children = element.children;
-	const index = note - 60;
+	const index = note - 36;
 	return children[index];
 }
