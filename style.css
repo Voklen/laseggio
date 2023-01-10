@@ -9,6 +9,17 @@ main {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	filter: blur(1rem);
+}
+
+h2 {
+	/* Position */
+	position: absolute;
+	width: 100%;
+	top: 40%;
+	left: 0;
+	/* Visual */
+	text-align: center;
 }
 
 #piano {
