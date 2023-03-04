@@ -13,7 +13,7 @@ function onInitialKeyPress() {
 	if (screenClicked) {
 		removeBlur();
 	} else {
-		displayText('Click anywhere to start', 'click-to-start')
+		displayText('Click anywhere to start', 'click-to-start', 'h2')
 	}
 }
 
@@ -25,11 +25,23 @@ function startClick() {
 	}
 }
 
-function displayText(text, className) {
-	let textElement = document.createElement('h2');
+function noMIDIDevice() {
+	removeClass('press-midi');
+
+	let text = `
+	A MIDI device is needed for this currently\n
+	I am planning on making a simplified version where you can click the keys\n
+	and focus more on music theory and listening than playing
+	`
+	displayText(text, 'pre-playing no-midi-device', 'p')
+}
+
+function displayText(text, className, element) {
+	let textElement = document.createElement(element);
 	textElement.innerHTML = text;
 	textElement.className = className;
-	document.body.appendChild(textElement)
+	document.body.appendChild(textElement);
+	return textElement;
 }
 
 function removeBlur() {

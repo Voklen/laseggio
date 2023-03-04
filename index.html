@@ -75,9 +75,11 @@
 			<div class="white" data-note="B"></div>
 		</div>
 	</main>
-	<h2 class="press-midi">Plug in a MIDI device and press a key</h2>
-	<div class="press-midi">
-		<button type="button" data-text="I don’t have a MIDI device"><span>I don’t have a MIDI device</span></button>
+	<h2 class="press-midi pre-playing">Plug in a MIDI device and press a key</h2>
+	<div class="press-midi pre-playing" id="no-midi-button">
+		<button type="button" data-text="I don’t have a MIDI device" onmousedown="noMIDIDevice()">
+			<span>I don’t have a MIDI device</span>
+		</button>
 	</div>
 </body>
 

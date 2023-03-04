@@ -93,7 +93,7 @@ button:hover>span {
 	transform: scale3d(1, 1, 1);
 }
 
-h2, .press-midi {
+.pre-playing {
 	/* Position */
 	position: absolute;
 	width: 100%;
@@ -103,8 +103,12 @@ h2, .press-midi {
 	text-align: center;
 }
 
-div[class="press-midi"] {
+#no-midi-button {
 	top: 50%;
+}
+
+.no-midi-device {
+	white-space: pre-line
 }
 
 .press-midi button {
