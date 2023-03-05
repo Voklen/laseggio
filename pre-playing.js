@@ -12,6 +12,7 @@ function onInitialKeyPress() {
 	removeClass('press-midi');
 	if (screenClicked) {
 		removeBlur();
+		removejsfile('pre-playing.js')
 	} else {
 		displayText('Click anywhere to start', 'pre-playing click-to-start', 'h2')
 	}
@@ -20,8 +21,9 @@ function onInitialKeyPress() {
 function startClick() {
 	screenClicked = true;
 	if (initialKeyPressed) {
-		removeClass('click-to-start')
+		removeClass('pre-playing')
 		removeBlur()
+		removejsfile('pre-playing.js')
 	}
 }
 
@@ -46,6 +48,16 @@ function displayText(text, className, element) {
 
 function removeBlur() {
 	document.getElementsByTagName('main')[0].style.filter = 'blur(0)';
+}
+
+function removejsfile(filename) {
+	var allsuspects = document.getElementsByTagName('script')
+	for (var i = allsuspects.length - 1; i >= 0; i--) {
+		if (allsuspects[i].getAttribute('src') == filename) {
+			allsuspects[i].parentNode.removeChild(allsuspects[i])
+			return;
+		}
+	}
 }
 
 function removeClass(className) {
