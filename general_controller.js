@@ -13,7 +13,7 @@ function onInitialKeyPress() {
 	if (screenClicked) {
 		removeBlur();
 	} else {
-		displayText('Click anywhere to start', 'click-to-start', 'h2')
+		displayText('Click anywhere to start', 'pre-playing click-to-start', 'h2')
 	}
 }
 
