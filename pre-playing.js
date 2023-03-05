@@ -12,7 +12,7 @@ function onInitialKeyPress() {
 	removeClass('press-midi');
 	if (screenClicked) {
 		removeBlur();
-		removejsfile('pre-playing.js')
+		removeJSfile('pre-playing.js')
 	} else {
 		displayText('Click anywhere to start', 'pre-playing click-to-start', 'h2')
 	}
@@ -23,7 +23,7 @@ function startClick() {
 	if (initialKeyPressed) {
 		removeClass('pre-playing')
 		removeBlur()
-		removejsfile('pre-playing.js')
+		removeJSfile('pre-playing.js')
 	}
 }
 
@@ -38,33 +38,6 @@ function noMIDIDevice() {
 	displayText(text, 'pre-playing no-midi-device', 'p')
 }
 
-function displayText(text, className, element) {
-	let textElement = document.createElement(element);
-	textElement.innerHTML = text;
-	textElement.className = className;
-	document.body.appendChild(textElement);
-	return textElement;
-}
-
 function removeBlur() {
 	document.getElementsByTagName('main')[0].style.filter = 'blur(0)';
-}
-
-function removejsfile(filename) {
-	var allsuspects = document.getElementsByTagName('script')
-	for (var i = allsuspects.length - 1; i >= 0; i--) {
-		if (allsuspects[i].getAttribute('src') == filename) {
-			allsuspects[i].parentNode.removeChild(allsuspects[i])
-			return;
-		}
-	}
-}
-
-function removeClass(className) {
-	let elements = document.getElementsByClassName(className);
-	Array.from(elements).forEach(removeElement)
-};
-
-function removeElement(element) {
-	element.remove()
 }
