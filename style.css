@@ -14,16 +14,20 @@ main {
 
 /* Credit to Codrops at  https://tympanus.net/Development/ButtonStylesInspiration/ for the button*/
 button {
+	/* Position */
 	min-width: 150px;
 	max-width: 250px;
+	width: 30%;
 	margin: 1em;
-	padding: 1em 2em;
-	border: none;
-	background: none;
+	padding: 1em 0;
 	vertical-align: middle;
 	position: relative;
+	/* Visual */
 	overflow: hidden;
+	border: none;
+	background: none;
 	color: #7986cb;
+	white-space: nowrap;
 }
 
 button:focus {
@@ -109,10 +113,6 @@ button:hover>span {
 
 .no-midi-device {
 	white-space: pre-line
-}
-
-.press-midi button {
-	width: 30%;
 }
 
 #piano {
