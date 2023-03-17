@@ -11,10 +11,9 @@ function onInitialKeyPress() {
 
 	removeClass('press-midi');
 	if (screenClicked) {
-		removeBlur();
-		removeJSfile('pre-playing.js')
+		endAndCleanup()
 	} else {
-		displayText('Click anywhere to start', 'pre-playing click-to-start', 'h2')
+		displayText('Click anywhere to start', 'h2', 'pre-playing click-to-start')
 	}
 }
 
@@ -22,8 +21,7 @@ function startClick() {
 	screenClicked = true;
 	if (initialKeyPressed) {
 		removeClass('pre-playing')
-		removeBlur()
-		removeJSfile('pre-playing.js')
+		endAndCleanup()
 	}
 }
 
@@ -35,7 +33,12 @@ function noMIDIDevice() {
 	I am planning on making a simplified version where you can click the keys\n
 	and focus more on music theory and listening than playing
 	`
-	displayText(text, 'pre-playing no-midi-device', 'p')
+	displayText(text, 'p', 'pre-playing no-midi-device')
+}
+
+function endAndCleanup() {
+	removeBlur()
+	removeJSfile('pre-playing.js')
 }
 
 function removeBlur() {

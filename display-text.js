@@ -1,7 +1,9 @@
-function displayText(text, className, element) {
+function displayText(text, element, className) {
 	let textElement = document.createElement(element);
 	textElement.innerHTML = text;
-	textElement.className = className;
+	if (className != null) {
+		textElement.className = className
+	}
 	document.body.appendChild(textElement);
 	return textElement;
 }
