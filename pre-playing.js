@@ -36,6 +36,7 @@ function noMIDIDevice() {
 function endAndCleanup() {
 	removeBlur()
 	removeJSfile('pre-playing.js')
+	start()
 }
 
 function removeBlur() {

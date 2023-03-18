@@ -1,0 +1,8 @@
+h2 {
+	/* Position */
+	position: absolute;
+	width: 100%;
+	top: 20%;
+	/* Visual */
+	text-align: center;
+}
