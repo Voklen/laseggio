@@ -20,6 +20,8 @@ function startClick() {
 		removeClass('pre-playing')
 		endAndCleanup()
 	}
+	// Remove startClick from running again
+	document.body.onmousedown = null
 }
 
 function noMIDIDevice() {
