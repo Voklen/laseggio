@@ -7,7 +7,11 @@ function setInstrument(piano) {
 }
 
 function noteOn(note, velocity) {
-	onInitialKeyPress();
+	if (!initialKeyPressed) {
+		onInitialKeyPress()
+		return
+	}
+
 	const noteElement = getNoteElement(note)
 	noteElement.style.background = 'red'
 	instrument.play(note, 0, { gain: velocity / 16 })
