@@ -8,6 +8,17 @@ function displayText(text, element, className) {
 	return textElement;
 }
 
+function hideText(element) {
+	element.style.animation = 'none'
+	element.offsetHeight /* trigger reflow */
+	element.style.animation = null
+	element.style.animationDirection = 'reverse'
+	// Remove child after animation
+	element.addEventListener('animationend', () => {
+		element.parentNode.removeChild(element)
+	})
+}
+
 function removeClass(className) {
 	let elements = document.getElementsByClassName(className);
 	Array.from(elements).forEach(removeElement)
