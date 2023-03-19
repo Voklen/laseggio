@@ -8,14 +8,18 @@ function displayText(text, element, className) {
 	return textElement;
 }
 
-function hideText(element) {
+async function hideText(element) {
 	element.style.animation = 'none'
 	element.offsetHeight /* trigger reflow */
 	element.style.animation = null
 	element.style.animationDirection = 'reverse'
-	// Remove child after animation
-	element.addEventListener('animationend', () => {
-		element.parentNode.removeChild(element)
+	// Wait for end of animation then remove element and return
+	return new Promise(resolve => {
+		function onAnimationEnd() {
+			element.parentNode.removeChild(element)
+			resolve()
+		}
+		element.addEventListener('animationend', onAnimationEnd);
 	})
 }
 

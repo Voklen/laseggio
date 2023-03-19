@@ -3,9 +3,10 @@ async function start() {
 	loadCSSfile('playing.css')
 	await sleep(500)
 	const middleC = displayText('This is middle C', 'h2')
-	await sleep(500)
+	await sleep(200)
 	await playNote(60, 800)
-	hideText(middleC)
+	await hideText(middleC)
+	const theirAttempt = displayText('Now you try', 'h2')
 }
 
 async function playNote(note, duration) {
