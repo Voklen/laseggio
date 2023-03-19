@@ -1,3 +1,11 @@
+/*
+This is where all the functions lie that are called to make up a
+Laseggio course
+*/
+
+
+// Text manipulation
+
 function displayText(text, element, className) {
 	let textElement = document.createElement(element);
 	textElement.innerHTML = text;
@@ -32,6 +40,8 @@ function removeElement(element) {
 	element.remove()
 }
 
+// File handling
+
 function removeCSSfile(filename) {
 	var allsuspects = document.getElementsByTagName('link')
 	for (var i = allsuspects.length - 1; i >= 0; i--) {
@@ -64,4 +74,16 @@ function loadJSfile(filename) {
 	scriptTag.type = 'text/javascript'
 	scriptTag.src = filename
 	document.getElementsByTagName('head')[0].appendChild(scriptTag)
+}
+
+// Other
+
+async function playNote(note, duration) {
+	noteOn(note, 100)
+	await sleep(duration)
+	noteOff(note)
+}
+
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
 }

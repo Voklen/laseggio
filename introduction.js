@@ -8,13 +8,3 @@ async function start() {
 	await hideText(middleC)
 	const theirAttempt = displayText('Now you try', 'h2')
 }
-
-async function playNote(note, duration) {
-	noteOn(note, 100)
-	await sleep(duration)
-	noteOff(note)
-}
-
-function sleep(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
-}
