@@ -7,4 +7,11 @@ async function start() {
 	await playNote(60, 800)
 	await hideText(middleC)
 	const theirAttempt = displayText('Now you try', 'h2')
+	if (await expectNote(60)) {
+		hideText(theirAttempt)
+		displayText('Very nice', 'h2')
+	} else {
+		hideText(theirAttempt)
+		displayText('Not quite', 'h2')
+	}
 }

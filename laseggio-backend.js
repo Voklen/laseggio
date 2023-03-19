@@ -40,6 +40,28 @@ function removeElement(element) {
 	element.remove()
 }
 
+// Note handling
+
+async function playNote(note, duration) {
+	noteOn(note, 100)
+	await sleep(duration)
+	noteOff(note)
+}
+
+async function expectNote(note) {
+	let received = await nextNote()
+	return (received == note)
+}
+
+async function nextNote() {
+	return new Promise(resolve => {
+		function onNote(note) {
+			resolve(note)
+		}
+		noteBroadcaster.subscribe(onNote)
+	})
+}
+
 // File handling
 
 function removeCSSfile(filename) {
@@ -77,12 +99,6 @@ function loadJSfile(filename) {
 }
 
 // Other
-
-async function playNote(note, duration) {
-	noteOn(note, 100)
-	await sleep(duration)
-	noteOff(note)
-}
 
 function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
