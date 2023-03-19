@@ -22,7 +22,7 @@ jobs:
     - name: Github REST API Call
       env:
         CI_TOKEN: ${{ secrets.CI_TOKEN }}
-        PARENT_REPO: voklen.github.io
+        PARENT_REPO: Voklen/voklen.github.io
         PARENT_BRANCH: develop
         WORKFLOW_ID: 51656734
       run: |
