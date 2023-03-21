@@ -95,7 +95,7 @@ function loadJSfile(filename) {
 	let scriptTag = document.createElement('script')
 	scriptTag.type = 'text/javascript'
 	scriptTag.src = filename
-	document.getElementsByTagName('head')[0].appendChild(scriptTag)
+	document.getElementById('scripts').appendChild(scriptTag)
 }
 
 // Other
