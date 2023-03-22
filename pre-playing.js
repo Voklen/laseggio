@@ -1,12 +1,12 @@
-const main = document.getElementsByTagName('main');
+const main = document.getElementsByTagName('main')
 
-let initialKeyPressed = false;
-let screenClicked = false;
+let initialKeyPressed = false
+let screenClicked = false
 
 function onInitialKeyPress() {
-	initialKeyPressed = true;
+	initialKeyPressed = true
 
-	removeClass('press-midi');
+	removeClass('press-midi')
 	if (screenClicked) {
 		endAndCleanup()
 	} else {
@@ -15,7 +15,7 @@ function onInitialKeyPress() {
 }
 
 function startClick() {
-	screenClicked = true;
+	screenClicked = true
 	if (initialKeyPressed) {
 		removeClass('pre-playing')
 		endAndCleanup()
@@ -25,7 +25,7 @@ function startClick() {
 }
 
 function noMIDIDevice() {
-	removeClass('press-midi');
+	removeClass('press-midi')
 
 	let text = `
 	A MIDI device is needed for this currently\n
@@ -42,5 +42,5 @@ function endAndCleanup() {
 }
 
 function removeBlur() {
-	document.getElementsByTagName('main')[0].style.filter = 'blur(0)';
+	document.getElementsByTagName('main')[0].style.filter = 'blur(0)'
 }

@@ -1,10 +1,12 @@
 /* Soundfont setup */
-let instrument;
+let instrument
 
-Soundfont.instrument(new AudioContext(), 'acoustic_grand_piano').then(setInstrument);
+Soundfont.instrument(new AudioContext(), 'acoustic_grand_piano').then(
+	setInstrument
+)
 
 function setInstrument(piano) {
-	instrument = piano;
+	instrument = piano
 }
 
 /* Note handling */
@@ -19,12 +21,11 @@ class NoteBroadcaster {
 	}
 
 	notifySubscribers(data) {
-		this.subscribers.forEach(subscriber => subscriber(data))
+		this.subscribers.forEach((subscriber) => subscriber(data))
 	}
 }
 
 let noteBroadcaster = new NoteBroadcaster()
-
 
 function noteOn(note, velocity) {
 	if (!initialKeyPressed) {
@@ -45,8 +46,8 @@ function noteOff(note) {
 }
 
 function getNoteElement(note) {
-	const element = document.getElementById('piano');
-	const children = element.children;
-	const index = note - 36;
-	return children[index];
+	const element = document.getElementById('piano')
+	const children = element.children
+	const index = note - 36
+	return children[index]
 }

@@ -3,18 +3,17 @@ This is where all the functions lie that are called to make up a
 Laseggio course
 */
 
-
 // Text manipulation
 
 function displayText(text, line = 0, element = 'h2', className) {
-	let textElement = document.createElement(element);
-	textElement.innerHTML = text;
+	let textElement = document.createElement(element)
+	textElement.innerHTML = text
 	if (className != null) {
 		textElement.className = className
 	}
 	let containerDiv = document.getElementById('text').children[line]
 	containerDiv.appendChild(textElement)
-	return textElement;
+	return textElement
 }
 
 async function hideText(element) {
@@ -23,19 +22,19 @@ async function hideText(element) {
 	element.style.animation = null
 	element.style.animationDirection = 'reverse'
 	// Wait for end of animation then remove element and return
-	return new Promise(resolve => {
+	return new Promise((resolve) => {
 		function onAnimationEnd() {
 			element.parentNode.removeChild(element)
 			resolve()
 		}
-		element.addEventListener('animationend', onAnimationEnd);
+		element.addEventListener('animationend', onAnimationEnd)
 	})
 }
 
 function removeClass(className) {
-	let elements = document.getElementsByClassName(className);
+	let elements = document.getElementsByClassName(className)
 	Array.from(elements).forEach(removeElement)
-};
+}
 
 function removeElement(element) {
 	element.remove()
@@ -51,11 +50,11 @@ async function playNote(note, duration) {
 
 async function expectNote(note) {
 	let received = await nextNote()
-	return (received == note)
+	return received == note
 }
 
 async function nextNote() {
-	return new Promise(resolve => {
+	return new Promise((resolve) => {
 		function onNote(note) {
 			resolve(note)
 		}
@@ -70,7 +69,7 @@ function removeCSSfile(filename) {
 	for (var i = allsuspects.length - 1; i >= 0; i--) {
 		if (allsuspects[i].getAttribute('href') == filename) {
 			allsuspects[i].parentNode.removeChild(allsuspects[i])
-			return;
+			return
 		}
 	}
 }
@@ -80,7 +79,7 @@ function removeJSfile(filename) {
 	for (var i = allsuspects.length - 1; i >= 0; i--) {
 		if (allsuspects[i].getAttribute('src') == filename) {
 			allsuspects[i].parentNode.removeChild(allsuspects[i])
-			return;
+			return
 		}
 	}
 }
@@ -102,5 +101,5 @@ function loadJSfile(filename) {
 // Other
 
 function sleep(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
+	return new Promise((resolve) => setTimeout(resolve, ms))
 }
