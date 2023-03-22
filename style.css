@@ -4,6 +4,39 @@ html, body {
 	margin: 0;
 }
 
+#text {
+	/* Position */
+	position: absolute;
+	width: 100%;
+	top: 20%;
+	/* Visual */
+	text-align: center;
+}
+
+#text div {
+	height: 2em
+}
+
+#text div * {
+	margin: 0;
+	animation: fade-in-animation 1s;
+}
+
+@keyframes fade-in-animation {
+	0% {
+		opacity: 0;
+		filter: blur(2px);
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		filter: blur(0);
+	}
+}
+
 main {
 	height: 100%;
 	display: flex;

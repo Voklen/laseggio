@@ -6,13 +6,14 @@ Laseggio course
 
 // Text manipulation
 
-function displayText(text, element, className) {
+function displayText(text, line = 0, element = 'h2', className) {
 	let textElement = document.createElement(element);
 	textElement.innerHTML = text;
 	if (className != null) {
 		textElement.className = className
 	}
-	document.body.appendChild(textElement);
+	let containerDiv = document.getElementById('text').children[line]
+	containerDiv.appendChild(textElement)
 	return textElement;
 }
 
