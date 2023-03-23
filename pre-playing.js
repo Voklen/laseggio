@@ -32,7 +32,7 @@ function noMIDIDevice() {
 	I am planning on making a simplified version where you can click the keys\n
 	and focus more on music theory and listening than playing
 	`
-	displayText(text, 'p', 'pre-playing no-midi-device')
+	displayText(text, 1, 'p', 'pre-playing no-midi-device')
 }
 
 function endAndCleanup() {
