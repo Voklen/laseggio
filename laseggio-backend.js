@@ -16,6 +16,23 @@ function displayText(text, line = 0, element = 'h2', className) {
 	return textElement
 }
 
+async function clearText() {
+	const textContainer = document.getElementById('text')
+	const lineElements = [...textContainer.children]
+	return Promise.all(lineElements.map(removeChildren))
+	async function removeChildren(element) {
+		const elementsToRemove = [...element.children]
+		return Promise.all(elementsToRemove.map(hideText))
+	}
+}
+
+async function hideLine(line) {
+	const textContainer = document.getElementById('text')
+	const lineElement = textContainer.children[line]
+	const elementsToRemove = [...lineElement.children]
+	return Promise.all(elementsToRemove.map(hideText))
+}
+
 async function hideText(element) {
 	element.style.animation = 'none'
 	element.offsetHeight /* trigger reflow */
