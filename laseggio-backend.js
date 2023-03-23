@@ -65,6 +65,16 @@ async function playNote(note, duration) {
 	noteOff(note)
 }
 
+async function expectSequence(notes) {
+	for (const note of notes) {
+		const correctNote = await expectNote(note)
+		if (!correctNote) {
+			return false
+		}
+	}
+	return true
+}
+
 async function expectNote(note) {
 	let received = await nextNote()
 	return received == note
