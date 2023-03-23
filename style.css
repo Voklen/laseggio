@@ -82,6 +82,7 @@ main {
 	margin: 0 -15px;
 	/* Visual */
 	background-color: black;
+	font-size: 0;
 }
 
 .white {
@@ -89,6 +90,16 @@ main {
 	width: 50px;
 	height: 200px;
 	margin: 0 2px;
+	display: flex;
 	/* Visual */
 	background: rgb(241, 240, 240);
+}
+
+.white span {
+	/* Position */
+	width: 100%;
+	align-self: flex-end;
+	margin-bottom: 1em;
+	/* Visual */
+	text-align: center;
 }
