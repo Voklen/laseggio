@@ -14,7 +14,10 @@ async function basicPlaying(text, notes) {
 	}
 	await hideText(thisIsD)
 	const theirAttempt = displayText('Now you try')
-	if (!(await expectSequence(notes))) {
+	if (await expectSequence(notes)) {
+		await clearText()
+		displayText(ComplimentGenerator.medium())
+	} else {
 		displayText('Not quite', 1)
 		await hideText(theirAttempt)
 		let tryAgain = displayText('Try again')
@@ -22,9 +25,9 @@ async function basicPlaying(text, notes) {
 			await hideText(tryAgain)
 			tryAgain = displayText('Try again')
 		}
+		await clearText()
+		displayText(ComplimentGenerator.return())
 	}
-	await clearText()
-	displayText('Good good')
 	await sleep(1200)
 	await clearText()
 }

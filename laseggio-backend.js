@@ -127,6 +127,59 @@ function loadJSfile(filename) {
 
 // Other
 
+class ComplimentGenerator {
+	static getRandom(array) {
+		return array[Math.floor(Math.random() * array.length)]
+	}
+
+	static return() {
+		const options = [
+			'Yas got it now',
+			'Nice, got there',
+			'“Anyone who has never made a mistake has never tried anything new.” ― Albert Einstein',
+			'Love the resilience',
+			'Nice determination',
+		]
+		return this.getRandom(options)
+	}
+
+	static low() {
+		const options = [
+			'Pretty good',
+			'Good',
+			'Good good',
+			'Nice',
+			'Nice one',
+			'Not too bad',
+		]
+		return this.getRandom(options)
+	}
+
+	static medium() {
+		const options = [
+			'Very good',
+			'Gooooood',
+			'Very nice',
+			'Nice nice',
+			'Niceeeee',
+			'Nailed it',
+		]
+		return this.getRandom(options)
+	}
+
+	static high() {
+		const options = [
+			'On fire!',
+			'ON FIRE',
+			'Verrrry nice',
+			'NICE',
+			'Amazing',
+			'Love it',
+		]
+		return this.getRandom(options)
+	}
+}
+
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }
