@@ -12,16 +12,19 @@ async function basicPlaying(text, notes) {
 	for (const note of notes) {
 		await playNote(note, 800)
 	}
+	let expectingPromise = expectSequence(notes)
 	await hideText(thisIsD)
 	const theirAttempt = displayText('Now you try')
-	if (await expectSequence(notes)) {
+	if (await expectingPromise) {
 		await clearText()
 		displayText(ComplimentGenerator.medium())
 	} else {
+		expectingPromise = expectSequence(notes)
 		displayText('Not quite', 1)
 		await hideText(theirAttempt)
 		let tryAgain = displayText('Try again')
-		while (!(await expectSequence(notes))) {
+		while (!(await expectingPromise)) {
+			expectingPromise = expectSequence(notes)
 			await hideText(tryAgain)
 			tryAgain = displayText('Try again')
 		}
