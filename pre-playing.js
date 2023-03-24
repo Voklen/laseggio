@@ -2,9 +2,11 @@ const main = document.getElementsByTagName('main')
 
 let initialKeyPressed = false
 let screenClicked = false
+let listeningCourse = false
 
 function onInitialKeyPress() {
 	initialKeyPressed = true
+	listeningCourse = document.getElementById('listening-course').checked
 
 	removeClass('press-midi')
 	if (screenClicked) {
@@ -43,7 +45,12 @@ function noMIDIDevice() {
 function endAndCleanup() {
 	removeBlur()
 	removeJSfile('pre-playing.js')
-	start()
+	removeCSSfile('pre-playing.css')
+	if (listeningCourse) {
+		listening()
+	} else {
+		start()
+	}
 }
 
 function removeBlur() {

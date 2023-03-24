@@ -186,6 +186,14 @@ class ComplimentGenerator {
 	}
 }
 
+function randItem(array) {
+	return array[Math.floor(Math.random() * array.length)]
+}
+
+function rand(from, to) {
+	return Math.floor(Math.random() * (to - from)) + from
+}
+
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }

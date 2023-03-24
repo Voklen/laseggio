@@ -1,20 +1,11 @@
 async function start() {
-	removeCSSfile('pre-playing.css')
 	await sleep(500)
 	await basicPlaying('This is middle C', [60])
 	await basicPlaying('This is the D above middle C', [62])
 	await basicPlaying('Now one after the other', [60, 62])
 	await basicPlaying('How about C and E', [60, 64])
 	await basicPlaying('C and D again', [60, 64])
-	await listening()
 	await basicPlaying('Now C, D, and E', [60, 62, 64])
-}
-
-async function listening() {
-	const nowListen = displayText('Now try to hear what note is being played')
-	await playNote(60, 800)
-	await playInvisibleNote(62, 800)
-	await expectAndRetry([60, 62], nowListen)
 }
 
 async function basicPlaying(text, notes) {
