@@ -17,6 +17,10 @@ function getMIDIMessage(message) {
 	switch (command) {
 		case 144:
 			if (velocity > 0) {
+				if (!initialKeyPressed) {
+					onInitialKeyPress()
+					return
+				}
 				noteOn(note, velocity)
 			} else {
 				noteOff(note)

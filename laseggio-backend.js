@@ -65,6 +65,12 @@ async function playNote(note, duration) {
 	noteOff(note)
 }
 
+async function playInvisibleNote(note, duration) {
+	noteOnSound(note, 100)
+	await sleep(duration)
+	noteOffSound(note)
+}
+
 async function expectSequence(notes) {
 	for (const note of notes) {
 		const correctNote = await expectNote(note)
