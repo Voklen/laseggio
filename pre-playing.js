@@ -10,7 +10,12 @@ function onInitialKeyPress() {
 	if (screenClicked) {
 		endAndCleanup()
 	} else {
-		displayText('Click anywhere to start', 'h2', 'pre-playing click-to-start')
+		displayText(
+			'Click anywhere to start',
+			1,
+			'h2',
+			'pre-playing click-to-start'
+		)
 	}
 }
 
