@@ -62,6 +62,38 @@ function removeElement(element) {
 	element.remove()
 }
 
+// General visuals
+
+async function toExplanation() {
+	const main = document.getElementsByTagName('main')[0]
+	main.classList.add('fade-out')
+	return new Promise((resolve) => {
+		main.addEventListener('transitionend', resolve)
+	})
+}
+
+async function fromExplanation() {
+	const main = document.getElementsByTagName('main')[0]
+	main.classList.remove('fade-out')
+	return new Promise((resolve) => {
+		main.addEventListener('transitionend', resolve)
+	})
+}
+
+async function showNextButton() {
+	let spanElement = document.createElement('span')
+	spanElement.textContent = 'Next'
+
+	let buttonElement = document.createElement('button')
+	buttonElement.appendChild(spanElement)
+	buttonElement.setAttribute('type', 'button')
+	buttonElement.setAttribute('data-text', 'Next')
+	document.getElementById('text').appendChild(buttonElement)
+	return new Promise((resolve) => {
+		buttonElement.addEventListener('click', () => resolve(buttonElement))
+	})
+}
+
 // Note handling
 
 async function playNote(note, duration) {
@@ -189,22 +221,6 @@ class ComplimentGenerator {
 		]
 		return this.getRandom(options)
 	}
-}
-
-async function toExplanation() {
-	const main = document.getElementsByTagName('main')[0]
-	main.classList.add('fade-out')
-	return new Promise((resolve) => {
-		main.addEventListener('transitionend', resolve)
-	})
-}
-
-async function fromExplanation() {
-	const main = document.getElementsByTagName('main')[0]
-	main.classList.remove('fade-out')
-	return new Promise((resolve) => {
-		main.addEventListener('transitionend', resolve)
-	})
 }
 
 function randItem(array) {

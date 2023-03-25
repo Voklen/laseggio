@@ -8,9 +8,7 @@ async function start() {
 	await basicPlaying('E D C', [64, 62, 60])
 	await basicPlaying('Let’s expand out from A to A', [57, 69])
 	await fastBasicPlaying('And walk up it', [57, 59, 60, 62, 64, 65, 67, 69])
-	displayText('Now for some theory')
-	sleep(100)
-	animateKeyboard()
+	await theory()
 }
 
 async function basicPlaying(text, notes) {
@@ -40,9 +38,30 @@ async function animateKeyboard() {
 		}
 	}
 	await sleep(2000)
-	visibleChildren.forEach((key) => {
+	return visibleChildren
+}
+
+async function expandNotes(keys) {
+	keys.forEach((key) => {
 		key.classList.add('all-white')
 	})
+	await sleep(2000)
+	keys.forEach((key) => {
+		key.style.transitionProperty = 'none'
+	})
+}
+
+async function contractNotes(keys) {
+	keys.forEach((key) => {
+		key.style.transitionProperty =
+			'width, height, margin, background-color, font-size'
+		key.style.transitionDuration = '2s'
+	})
+	await sleep(100)
+	keys.forEach((key) => {
+		key.classList.remove('all-white')
+	})
+	await sleep(2000)
 }
 
 async function expectAndRetry(notes) {
@@ -64,4 +83,42 @@ async function expectAndRetry(notes) {
 	}
 	await sleep(1200)
 	await clearText()
+}
+
+async function theory() {
+	displayText('Now for some theory')
+	const keys = await animateKeyboard()
+	await expandNotes(keys)
+	hideLine(0)
+	displayText(
+		'Each of these are a semitone apart, i.e. they have the same frequency ratio',
+		2,
+		'p'
+	)
+	await displayText(
+		'An octave doubles the frequency, so if you want to calculate each ratio knock yourself out',
+		3,
+		'p'
+	)
+	const notes = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]
+	for (const note of notes) {
+		await playNote(note, 200)
+	}
+	const next_button = await showNextButton()
+	displayText(
+		'The reason we have white and black notes is because the white notes were the only ones',
+		2,
+		'p'
+	)
+	await displayText(
+		'Gregorian monks and nuns in the 8th century used, and then the black frequencies were added in after.',
+		3,
+		'p'
+	)
+	await contractNotes(keys)
+	await new Promise((resolve) => {
+		next_button.addEventListener('click', resolve)
+	})
+	await clearText()
+	next_button.remove()
 }
