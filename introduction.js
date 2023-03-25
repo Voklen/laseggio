@@ -31,6 +31,7 @@ async function animateKeyboard() {
 	const visibleChildren = []
 	const pianoChildren = document.getElementById('piano').children
 	for (let i = 0; i < pianoChildren.length; i++) {
+		pianoChildren[i].style.transitionProperty = 'all'
 		if (i < 24 || i >= 36) {
 			pianoChildren[i].classList.add('fade-out')
 		} else {
@@ -39,6 +40,14 @@ async function animateKeyboard() {
 	}
 	await sleep(2000)
 	return visibleChildren
+}
+
+async function reverseKeyboardAnimation() {
+	const pianoChildren = document.getElementById('piano').children
+	for (key of pianoChildren) {
+		key.classList.remove('fade-out')
+	}
+	await sleep(2000)
 }
 
 async function expandNotes(keys) {
@@ -53,15 +62,16 @@ async function expandNotes(keys) {
 
 async function contractNotes(keys) {
 	keys.forEach((key) => {
-		key.style.transitionProperty =
-			'width, height, margin, background-color, font-size'
-		key.style.transitionDuration = '2s'
+		key.style.transitionProperty = 'all'
 	})
 	await sleep(100)
 	keys.forEach((key) => {
 		key.classList.remove('all-white')
 	})
 	await sleep(2000)
+	keys.forEach((key) => {
+		key.style.transitionProperty = 'none'
+	})
 }
 
 async function expectAndRetry(notes) {
@@ -121,4 +131,5 @@ async function theory() {
 	})
 	await clearText()
 	next_button.remove()
+	reverseKeyboardAnimation()
 }

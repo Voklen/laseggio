@@ -51,7 +51,6 @@ main {
 }
 
 .fade-out {
-	transition: opacity 2s ease-in-out;
 	opacity: 0;
 }
 
@@ -84,6 +83,7 @@ main {
 }
 
 #piano div {
+	transition: none 2s ease-in-out;
 	border: 1px solid black;
 }
 
@@ -119,9 +119,6 @@ main {
 }
 
 .all-white {
-	transition-property: width, height, margin, background-color, font-size;
-	transition-duration: 2s;
-	transition-timing-function: ease-in-out;
 	/* Position */
 	width: 50px;
 	height: 200px;
