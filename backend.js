@@ -5,13 +5,15 @@ Laseggio course
 
 // Text manipulation
 
-function displayText(text, line = 0, element = 'h2', className) {
+async function displayText(text, line = 0, element = 'h2', className) {
+	const hidingLinePromise = hideLine(line)
 	let textElement = document.createElement(element)
 	textElement.innerHTML = text
 	if (className != null) {
 		textElement.className = className
 	}
 	let containerDiv = document.getElementById('text').children[line]
+	await hidingLinePromise
 	containerDiv.appendChild(textElement)
 	return textElement
 }
@@ -41,7 +43,10 @@ async function hideText(element) {
 	// Wait for end of animation then remove element and return
 	return new Promise((resolve) => {
 		function onAnimationEnd() {
-			element.parentNode.removeChild(element)
+			const parent = element.parentNode
+			if (parent != null) {
+				parent.removeChild(element)
+			}
 			resolve()
 		}
 		element.addEventListener('animationend', onAnimationEnd)
