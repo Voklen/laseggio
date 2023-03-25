@@ -19,7 +19,7 @@ html, body {
 
 #text div * {
 	margin: 0;
-	animation: fade-in-animation 1s;
+	animation: fade-in-animation 1s ease-in-out;
 }
 
 @keyframes fade-in-animation {
@@ -43,13 +43,22 @@ main {
 	align-items: center;
 	justify-content: center;
 	filter: blur(1rem);
+	opacity: 1;
 }
+
+.fade-out {
+	transition: opacity 2s ease-in-out;
+	opacity: 0;
+}
+
+/* Piano */
 
 #piano {
 	width: 100%;
 	max-width: 1710px;
 	display: flex;
 	flex-flow: row nowrap;
+	justify-content: center;
 }
 
 @media (max-width:1366px) {
@@ -74,12 +83,22 @@ main {
 	border: 1px solid black;
 }
 
+#piano div span {
+	/* Position */
+	width: 100%;
+	align-self: flex-end;
+	margin-bottom: 1em;
+	/* Visual */
+	text-align: center;
+}
+
 .black {
 	/* Position */
-	position: relative;
 	width: 18px;
 	height: 100px;
 	margin: 0 -15px;
+	display: flex;
+	z-index: 1;
 	/* Visual */
 	background-color: black;
 	font-size: 0;
@@ -95,11 +114,16 @@ main {
 	background: rgb(241, 240, 240);
 }
 
-.white span {
+.all-white {
+	transition-property: width, height, margin, background, font-size;
+	transition-duration: 2s;
+	transition-timing-function: ease-in-out;
 	/* Position */
-	width: 100%;
-	align-self: flex-end;
-	margin-bottom: 1em;
+	width: 50px;
+	height: 200px;
+	margin: 0 2px;
+	display: flex;
 	/* Visual */
-	text-align: center;
+	background: rgb(241, 240, 240);
+	font-size: 1em;
 }

@@ -186,6 +186,22 @@ class ComplimentGenerator {
 	}
 }
 
+async function toExplanation() {
+	const main = document.getElementsByTagName('main')[0]
+	main.classList.add('fade-out')
+	return new Promise((resolve) => {
+		main.addEventListener('transitionend', resolve)
+	})
+}
+
+async function fromExplanation() {
+	const main = document.getElementsByTagName('main')[0]
+	main.classList.remove('fade-out')
+	return new Promise((resolve) => {
+		main.addEventListener('transitionend', resolve)
+	})
+}
+
 function randItem(array) {
 	return array[Math.floor(Math.random() * array.length)]
 }
