@@ -45,7 +45,6 @@ function noMIDIDevice() {
 function endAndCleanup() {
 	removeBlur()
 	removeJSfile('pre-playing.js')
-	removeCSSfile('pre-playing.css')
 	if (listeningCourse) {
 		listening()
 	} else {

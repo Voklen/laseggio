@@ -43,10 +43,7 @@ async function hideText(element) {
 	// Wait for end of animation then remove element and return
 	return new Promise((resolve) => {
 		function onAnimationEnd() {
-			const parent = element.parentNode
-			if (parent != null) {
-				parent.removeChild(element)
-			}
+			element.remove()
 			resolve()
 		}
 		element.addEventListener('animationend', onAnimationEnd)
@@ -132,33 +129,16 @@ async function nextNote() {
 	})
 }
 
-// File handling
-
-function removeCSSfile(filename) {
-	var allsuspects = document.getElementsByTagName('link')
-	for (var i = allsuspects.length - 1; i >= 0; i--) {
-		if (allsuspects[i].getAttribute('href') == filename) {
-			allsuspects[i].parentNode.removeChild(allsuspects[i])
-			return
-		}
-	}
-}
+// JavaScript file handling
 
 function removeJSfile(filename) {
-	var allsuspects = document.getElementsByTagName('script')
-	for (var i = allsuspects.length - 1; i >= 0; i--) {
-		if (allsuspects[i].getAttribute('src') == filename) {
-			allsuspects[i].parentNode.removeChild(allsuspects[i])
+	var allScriptTags = document.getElementsByTagName('script')
+	for (tag of allScriptTags) {
+		if (tag.getAttribute('src') == filename) {
+			tag.remove()
 			return
 		}
 	}
-}
-
-function loadCSSfile(filename) {
-	let scriptTag = document.createElement('link')
-	scriptTag.rel = 'stylesheet'
-	scriptTag.href = filename
-	document.getElementsByTagName('head')[0].appendChild(scriptTag)
 }
 
 function loadJSfile(filename) {
@@ -169,59 +149,6 @@ function loadJSfile(filename) {
 }
 
 // Other
-
-class ComplimentGenerator {
-	static getRandom(array) {
-		return array[Math.floor(Math.random() * array.length)]
-	}
-
-	static return() {
-		const options = [
-			'Yas got it now',
-			'Nice, got there',
-			'“Anyone who has never made a mistake has never tried anything new.” ― Albert Einstein',
-			'Love the resilience',
-			'Nice determination',
-		]
-		return this.getRandom(options)
-	}
-
-	static low() {
-		const options = [
-			'Pretty good',
-			'Good',
-			'Good good',
-			'Nice',
-			'Nice one',
-			'Not too bad',
-		]
-		return this.getRandom(options)
-	}
-
-	static medium() {
-		const options = [
-			'Very good',
-			'Gooooood',
-			'Very nice',
-			'Nice nice',
-			'Niceeeee',
-			'Nailed it',
-		]
-		return this.getRandom(options)
-	}
-
-	static high() {
-		const options = [
-			'On fire!',
-			'ON FIRE',
-			'Verrrry nice',
-			'NICE',
-			'Amazing',
-			'Love it',
-		]
-		return this.getRandom(options)
-	}
-}
 
 async function buttonPress(button) {
 	return new Promise((resolve) => {
@@ -239,4 +166,53 @@ function rand(from, to) {
 
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+class ComplimentGenerator {
+	static return() {
+		const options = [
+			'Yas got it now',
+			'Nice, got there',
+			'“Anyone who has never made a mistake has never tried anything new.” ― Albert Einstein',
+			'Love the resilience',
+			'Nice determination',
+		]
+		return randItem(options)
+	}
+
+	static low() {
+		const options = [
+			'Pretty good',
+			'Good',
+			'Good good',
+			'Nice',
+			'Nice one',
+			'Not too bad',
+		]
+		return randItem(options)
+	}
+
+	static medium() {
+		const options = [
+			'Very good',
+			'Gooooood',
+			'Very nice',
+			'Nice nice',
+			'Niceeeee',
+			'Nailed it',
+		]
+		return randItem(options)
+	}
+
+	static high() {
+		const options = [
+			'On fire!',
+			'ON FIRE',
+			'Verrrry nice',
+			'NICE',
+			'Amazing',
+			'Love it',
+		]
+		return randItem(options)
+	}
 }
