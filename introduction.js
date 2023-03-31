@@ -101,20 +101,36 @@ async function theory() {
 	await expandNotes(keys)
 	hideLine(0)
 	displayText(
-		'Each of these are a semitone apart, i.e. they have the same frequency ratio',
+		'Each of these are a semitone. They have the same frequency ratio between them',
 		2,
 		'p'
 	)
-	await displayText(
-		'An octave doubles the frequency, so if you want to calculate each ratio knock yourself out',
-		3,
-		'p'
-	)
+	await displayText('Every 12 semitones is an octave', 3, 'p')
 	const notes = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]
 	for (const note of notes) {
 		await playNote(note, 200)
 	}
-	const next_button = await showNextButton()
+	const nextButton = await showNextButton()
+	hideLine(3)
+	await displayText(
+		'If you’re interested, every 12 semitones (an octave) doubles the frequency',
+		2,
+		'p'
+	)
+	displayText(
+		'So if you want to calculate the frequency ratio between each note go right ahead',
+		3,
+		'p'
+	)
+	await buttonPress(nextButton)
+	hideLine(3)
+	await displayText(
+		'The black notes are described as either the "sharp" of the note lower (denoted with a #)',
+		2,
+		'p'
+	)
+	displayText('Or the "flat" of the note above (denoted with a ♭)', 3, 'p')
+	await buttonPress(nextButton)
 	displayText(
 		'The reason we have white and black notes is because the white notes were the only ones',
 		2,
@@ -126,10 +142,8 @@ async function theory() {
 		'p'
 	)
 	await contractNotes(keys)
-	await new Promise((resolve) => {
-		next_button.addEventListener('click', resolve)
-	})
+	await buttonPress(nextButton)
 	await clearText()
-	next_button.remove()
-	reverseKeyboardAnimation()
+	nextButton.remove()
+	await reverseKeyboardAnimation()
 }

@@ -223,6 +223,12 @@ class ComplimentGenerator {
 	}
 }
 
+async function buttonPress(button) {
+	return new Promise((resolve) => {
+		button.addEventListener('click', resolve)
+	})
+}
+
 function randItem(array) {
 	return array[Math.floor(Math.random() * array.length)]
 }
