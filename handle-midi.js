@@ -33,7 +33,6 @@ function getMIDIMessage(message) {
 }
 
 function onMIDIFailure() {
-	console.log('Could not access your MIDI devices.')
-	console.log('indeed')
-	console.log('yeah no idea')
+	displayText('This website requires MIDI to function')
+	displayText('Please reload and try again', 1)
 }
