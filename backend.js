@@ -61,7 +61,7 @@ function removeElement(element) {
 
 // General visuals
 
-async function toExplanation() {
+async function hideKeyboard() {
 	const main = document.getElementsByTagName('main')[0]
 	main.classList.add('fade-out')
 	return new Promise((resolve) => {
@@ -69,7 +69,7 @@ async function toExplanation() {
 	})
 }
 
-async function fromExplanation() {
+async function showKeyboard() {
 	const main = document.getElementsByTagName('main')[0]
 	main.classList.remove('fade-out')
 	return new Promise((resolve) => {

@@ -1,4 +1,5 @@
 async function start() {
+	loadJSfile('menu.js')
 	await sleep(500)
 	await basicPlaying('This is middle C', [60])
 	await basicPlaying('This is the D above middle C', [62])
@@ -9,6 +10,7 @@ async function start() {
 	await basicPlaying('Let’s expand out from A to A', [57, 69])
 	await fastBasicPlaying('And walk up it', [57, 59, 60, 62, 64, 65, 67, 69])
 	await theory()
+	await toMenu()
 }
 
 async function basicPlaying(text, notes) {
