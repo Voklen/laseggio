@@ -122,10 +122,7 @@ async function expectNote(note) {
 
 async function nextNote() {
 	return new Promise((resolve) => {
-		function onNote(note) {
-			resolve(note)
-		}
-		noteBroadcaster.subscribe(onNote)
+		noteBroadcaster.subscribe(resolve)
 	})
 }
 

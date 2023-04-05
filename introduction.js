@@ -10,7 +10,13 @@ async function start() {
 	await basicPlaying('Let’s expand out from A to A', [57, 69])
 	await fastBasicPlaying('And walk up it', [57, 59, 60, 62, 64, 65, 67, 69])
 	await theory()
-	await toMenu()
+	await basicPlaying('So let’s do a little D♭', [61])
+	await basicPlaying('Now a C# (yes, it’s the same)', [61])
+	await basicPlaying('Walk up by semitones', [60, 61, 62, 63, 64])
+	await displayText('And that’s us done the first lesson!')
+	const nextButton = await showNextButton()
+	nextButton.remove()
+	toMenu()
 }
 
 async function basicPlaying(text, notes) {
