@@ -63,18 +63,12 @@ function removeElement(element) {
 
 async function hideKeyboard() {
 	const main = document.getElementsByTagName('main')[0]
-	main.classList.add('fade-out')
-	return new Promise((resolve) => {
-		main.addEventListener('transitionend', resolve)
-	})
+	await fadeOutElement(main)
 }
 
 async function showKeyboard() {
 	const main = document.getElementsByTagName('main')[0]
-	main.classList.remove('fade-out')
-	return new Promise((resolve) => {
-		main.addEventListener('transitionend', resolve)
-	})
+	await fadeInElement(main)
 }
 
 async function showNextButton() {
@@ -89,6 +83,20 @@ async function showNextButton() {
 	return new Promise((resolve) => {
 		buttonElement.addEventListener('click', () => resolve(buttonElement))
 	})
+}
+
+async function fadeOutElement(element) {
+	element.classList.add('fade-out')
+	return new Promise((resolve) => {
+		element.addEventListener('transitionend', resolve)
+	})
+}
+
+async function fadeInElement(element) {
+	element.style.display = null // Remove any display:none on it
+	element.offsetHeight /* trigger reflow */
+	element.classList.remove('fade-out')
+	await sleep(2000)
 }
 
 // Note handling

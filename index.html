@@ -19,11 +19,11 @@
 		<script defer src="backend.js" type="text/javascript"></script>
 		<!-- Ephemeral scripts -->
 		<script defer src="pre-playing.js" type="text/javascript"></script>
-		<script defer src="introduction.js" type="text/javascript"></script>
+		<script defer src="lessons/introduction/introduction.js" type="text/javascript"></script>
 		<script defer src="listening.js" type="text/javascript"></script>
 	</div>
 	<!-- Contents -->
-	<main>
+	<main class="fadable">
 		<div id="piano">
 			<div class="white"><span>C</span></div>
 			<div class="black"><span>C#</span></div>
@@ -101,6 +101,10 @@
 		</button>
 		<input type="checkbox" id="listening-course" value="listening-course">
 		<label for="listening-course">Randomly generated listening course</label>
+	</div>
+	<div id="lesson-selection" style="display:none;" class="fadable fade-out">
+		<div><img src="lessons/introduction/icon.svg"></div>
+		<div><img src="lessons/introduction/icon.svg"></div>
 	</div>
 </body>
 
