@@ -137,6 +137,7 @@ main {
 /* Lesson selection */
 
 #lesson-selection {
+	/* Positioning */
 	display: flex;
 	position: absolute;
 	align-items: center;
@@ -145,6 +146,9 @@ main {
 	width: 100%;
 	height: 100%;
 	padding-left: 6em;
+
+	/* Visuals */
+	text-align: center;
 }
 
 #lesson-selection>div {
