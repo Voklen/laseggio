@@ -3,10 +3,12 @@ const main = document.getElementsByTagName('main')
 let initialKeyPressed = false
 let screenClicked = false
 let listeningCourse = false
+let learnByEarCourse = false
 
 function onInitialKeyPress() {
 	initialKeyPressed = true
 	listeningCourse = document.getElementById('listening-course').checked
+	learnByEarCourse = document.getElementById('learn-by-ear').checked
 
 	removeClass('press-midi')
 	if (screenClicked) {
@@ -47,6 +49,8 @@ function endAndCleanup() {
 	removeJSfile('pre-playing.js')
 	if (listeningCourse) {
 		listening()
+	} else if (learnByEarCourse) {
+		learnByEar()
 	} else {
 		start()
 	}

@@ -100,8 +100,12 @@
 		<button type="button" data-text="I don’t have a MIDI device" onmousedown="noMIDIDevice()">
 			<span>I don’t have a MIDI device</span>
 		</button>
-		<input type="checkbox" id="listening-course" value="listening-course">
+		<input type="radio" id="normal" name="course-type" value="normal">
+		<label for="normal">Normal</label>
+		<input type="radio" id="listening-course" name="course-type" value="listening-course">
 		<label for="listening-course">Randomly generated listening course</label>
+		<input type="radio" id="learn-by-ear" name="course-type" value="learn-by-ear">
+		<label for="learn-by-ear">Learn by ear</label>
 	</div>
 	<div id="lesson-selection" style="display:none;" class="fadable fade-out">
 		<div>
