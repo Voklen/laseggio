@@ -1,3 +1,4 @@
+/// For example, the Peppa pig intro is `G5 E5 C5 D5 G4 G4 B4 D5 F5 E5 C5`
 async function learnByEar() {
 	const songNotesString = prompt(
 		'Enter the song notes you want to learn',
@@ -10,6 +11,7 @@ async function learnByEar() {
 	}
 }
 
+/// This converts SPN to the note number, C4 being 60. https://en.wikipedia.org/wiki/Scientific_pitch_notation
 function convertSPNToNumber(spn) {
 	const pitchMap = {
 		C: 0,
